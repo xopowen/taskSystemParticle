@@ -4,10 +4,10 @@ Particle.__index = Particle
 function Particle:create(position,cls,r)
     local particle = {}
     setmetatable(particle,Particle)
-    particle.object = cls:create(position,r,true)
-    particle.position = position
-    particle.acceleration = Vector:create(0,0.005)
-    particle.velocity = Vector:create(math.random(-10,10)/10,math.random(-10,0)/10)
+    particle.object = cls:create(position ,r,true)
+    particle.position =  position:copy()
+    particle.acceleration = Vector:create(0,math.random(0.005,0.01))
+    particle.velocity = Vector:create(math.random(-10,10)/10,math.random(0,-10)/10)
     return particle
 end
 
@@ -18,9 +18,9 @@ function Particle:update()
 end
  
 
-function Particle:applyForce(force)
-    self.acceleration:add(force)
-end
+-- function Particle:applyForce(force)
+--     self.acceleration:add(force)
+-- end
  
 function Particle:draw()
     self.object:draw()

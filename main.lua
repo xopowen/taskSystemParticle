@@ -22,6 +22,7 @@ function love.update(dt)
         else
             if v then
                 cubes[k] = ParticleSystem:create(v.position,Cube,v.startRIndoCicle,10)
+                
             end
         end
     end

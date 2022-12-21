@@ -6,7 +6,6 @@ function  ParticleSystem:create(position,cls,r,n)
     setmetatable(system,ParticleSystem)
     system.cls=cls
     system.r=r
-
     system.object = cls:create(position,r,true) 
     system.position = position
     system.n = n  
@@ -16,8 +15,6 @@ function  ParticleSystem:create(position,cls,r,n)
     return system
 end
 
- 
-
 function ParticleSystem:draw()
    
     for k,v in pairs(self.particles) do
@@ -25,11 +22,11 @@ function ParticleSystem:draw()
     end
 end
 
-function ParticleSystem:applyForce(force)
-    for k,v in pairs(self.particles) do
-        v:applyForce(force)
-    end
-end
+-- function ParticleSystem:applyForce(force)
+--     for k,v in pairs(self.particles) do
+--         v:applyForce(force)
+--     end
+-- end
 
 function ParticleSystem:update()
     if #self.particles< self.n then
@@ -37,9 +34,8 @@ function ParticleSystem:update()
           
         self.index = self.index + 1
     end
- 
+  
     for k,v in pairs(self.particles) do
             v:update()
-        
     end
 end
